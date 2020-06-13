@@ -12,9 +12,19 @@ def site():
 
 @app.route("/alert/<rgb>", methods=["POST"])
 def alert(rgb):
-    print(utils.alert(rgb))
+    utils.alert(rgb) 
     return redirect(url_for("/"))
 
+
+@app.route("/rainbow/<speed>", methods=["POST"])
+def rainbow(speed):
+    utils.razer_rainbow((float) speed)
+    return redirect(url_for("/"))
+
+@app.route("/fill/<rgb>", methods=["POST"))
+def fill(rgb):
+    utils.fill(rgb)
+    return redirect(url_for("/"))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
