@@ -17,7 +17,11 @@ previous_display = ['']
 def alert(rgb: tuple):
     lights.fill(rgb)
     time.sleep(.2)
+    lights.fill(0, 0, 0)
+    time.sleep(.2)
     lights.fill(rgb)
+    time.sleep(.2)
+    lights.fill(0, 0, 0)
     time.sleep(.2)
     return_to_previous(f'{rgb} alert')
     print(f'Alert color {rgb}')
