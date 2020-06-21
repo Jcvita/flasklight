@@ -12,20 +12,26 @@ def site():
 
 @app.route("/alert/<rgb>", methods=["POST"])
 def alert(rgb):
-    utils.alert(rgb) 
+    utils.do_action(action="alert", color=rgb) 
     return redirect(url_for("/"))
 
 
-@app.route("/rainbow/<speed>", methods=["POST"])
-def rainbow(speed):
-    utils.razer_rainbow((float) speed)
+@app.route("/rainbow/<freq>", methods=["POST"])
+def rainbow(freq):
+    utils.do_action(action="razer_rainbow", frequency=freq)
     return redirect(url_for("/"))
 
 @app.route("/fill/<rgb>", methods=["POST"))
 def fill(rgb):
-    utils.fill(rgb)
+    utils.do_action(action="fill", color=rgb)
     return redirect(url_for("/"))
 
+@app.route("/party/<freq>", methods=["POST"])
+def party(freq):
+    utils.do_action(action="party", frequency=freq)
+    return redirect(url_for("/"))
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000)
 
